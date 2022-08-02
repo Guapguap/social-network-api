@@ -26,7 +26,7 @@ const UserSchema = new Schema({
     }]
 });
 
-// create the User Model using the Schema
+// create the User model using the UserSchema
 const User = Model('User', UserSchema);
 
  // export the User model
