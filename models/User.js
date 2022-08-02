@@ -21,11 +21,9 @@ const UserSchema = new Schema({
     }],
     
     friends: [{
-
         type: Schema.Types.ObjectId,
         ref: "User"
     }]
-
 });
 
 // create the User Model using the Schema
