@@ -1,4 +1,4 @@
-const {Schema, Model} = require("mongoose");
+const {Schema, model} = require("mongoose");
 const moment = require('moment')
 
 // needs to go before ThoughtSchema to use ReactionSchema.
@@ -57,7 +57,7 @@ ThoughtSchema.virtual('reactionCount')
 });
 
 // create the Thought model using the ThoughtSchema
-const Thought = Model('Thought', ThoughtSchema);
+const Thought = model('Thought', ThoughtSchema);
 
 // Export Thought Module
 module.exports = Thought;
