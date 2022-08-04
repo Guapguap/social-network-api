@@ -11,10 +11,15 @@ const {
 
 // route for /api/users 
 // get and post methods
-router.route('/').get(getAllUsers).post(createUsers);
+router.route('/')
+.get(getAllUsers)
+.post(createUsers);
 
 // route for /api/users/:id 
 // get put and delete methods
-router.route('/:id').get(getUsersById).put(updateUsers).delete(deleteUsers);
+router.route('/:id')
+.get(getUsersById)
+.put(updateUsers)
+.delete(deleteUsers);
 
 module.exports = router;
