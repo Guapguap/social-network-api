@@ -48,4 +48,16 @@ updateUsers(req, res) {
     )
     .catch((err) => res.status(500).json(err));
 },
+
+  //delete a user
+  deleteUsers(req, res) {
+    User.findOneAndDelete({ _id: req.params.userId })
+      .then((user) =>
+        !user
+          ? res.status(404).json({ message: "No User find with this ID!" })
+          : Thought.deleteMany({ _id: { $in: user.thoughts } })
+      )
+      .then(() => res.json({ message: "User and Thought deleted!" }))
+      .catch((err) => res.status(500).json(err));
+  }
 };
