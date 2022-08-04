@@ -1,3 +1,4 @@
+// Requiring the models to create records and to reference those new records
 const {User, Thought} = require('../models');
 
 module.exports = {
@@ -20,5 +21,15 @@ module.exports = {
               : res.json(user)
           )
           .catch((err) => res.status(500).json(err));
-      }
+      },
+
+    //creates a user
+    createUsers(req, res) {
+    User.create(req.body)
+      .then((user) => res.json(user))
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
+  }
 }
