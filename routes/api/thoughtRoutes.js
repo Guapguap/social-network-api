@@ -9,7 +9,6 @@ const {
     deleteThoughts,
     addReaction,
     deleteReaction
-
 } = require('../../controllers/thoughts-controller');
 
 // root route
