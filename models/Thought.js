@@ -1,6 +1,32 @@
 const {Schema, Model} = require("mongoose");
 const moment = require('moment')
 
+// needs to go before ThoughtSchema to use ReactionSchema.
+// Reaction Schema 
+const ReactionSchema = new Schema({
+    reactionId: {
+
+    },
+
+    reactionBody: {
+        type: String,
+        require: true,
+        maxlength: 280
+    },
+
+    username: {
+        type: String,
+        require: true
+    },
+
+    createAt: {
+        type: Date,
+        default: Date.now,
+        get: createdAtVal => moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
+    }
+});
+
+// Thought Schema
 const ThoughtSchema = new Schema({
 
     thoughtText: {
@@ -30,31 +56,8 @@ ThoughtSchema.virtual('reactionCount')
     return this.reactions.length;
 });
 
-const ReactionSchema = new Schema({
-    reactionId: {
-
-    },
-
-    reactionBody: {
-        type: String,
-        require: true,
-        maxlength: 280
-    },
-
-    username: {
-        type: String,
-        require: true
-    },
-
-    createAt: {
-        type: Date,
-        default: Date.now,
-        get: createdAtVal => moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
-    }
-});
-
 // create the Thought model using the ThoughtSchema
-const Thought = model('Thought', ThoughtSchema);
+const Thought = Model('Thought', ThoughtSchema);
 
 // Export Thought Module
 module.exports = Thought;
