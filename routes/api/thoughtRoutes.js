@@ -9,7 +9,7 @@ const {
     deleteThoughts,
     addReaction,
     deleteReaction
-} = require('../../controllers/thoughts-controller');
+} = require('../../controllers/thoughtController');
 
 // root route
 // get method

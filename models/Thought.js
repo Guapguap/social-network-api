@@ -5,7 +5,8 @@ const moment = require('moment')
 // Reaction Schema 
 const ReactionSchema = new Schema({
     reactionId: {
-
+        type: Schema.Types.ObjectId,
+        default: () => new Types.ObjectId(),
     },
 
     reactionBody: {
@@ -24,6 +25,13 @@ const ReactionSchema = new Schema({
         default: Date.now,
         get: createdAtVal => moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
     }
+},
+{
+    toJSON: {
+        virtuals: true,
+        getters: true
+    },
+    id: false,
 });
 
 // Thought Schema
@@ -48,6 +56,13 @@ const ThoughtSchema = new Schema({
     },
 
     reactions: [ReactionSchema]
+},
+{
+    toJSON: {
+        virtuals: true,
+        getters: true,
+    },
+    id: false,
 })
 
 // get total count of reactions
