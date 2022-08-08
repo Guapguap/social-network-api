@@ -37,4 +37,18 @@ createThoughts(req, res) {
     )
     .catch((err) => res.status(500).json(err));
 },
+
+updateThoughts(req, res) {
+    Thought.findOneAndUpdate(
+        {_id: req.params.thoughtId},
+        {$set: req.body},
+        { runValidators: true, New: true}
+    )
+    .then((user) =>
+    !user
+        ? res.status(404).json({message: "No thought found with this Id."})
+        : res.json(user)
+    )
+    .catch((err) => res.status(500).json(err));
+},
 }
