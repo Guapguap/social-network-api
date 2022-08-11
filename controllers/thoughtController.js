@@ -66,9 +66,22 @@ deleteThoughts(req, res) {
       )
       .then((user) =>
         !user
-          ? res.status(404).json({ message: 'Thought deleted, but no user found'})
+          ? res.status(404).json({ message: 'No user could be found with that thought'})
           : res.json({ message: 'Thought successfully deleted' })
       )
       .catch((err) => res.status(500).json(err));
-  }
+  },
+// Create reaction
+addReaction(req, res) {
+    Thought.findOneAndUpdate(
+        {_id: req.params.thoughtId},
+        {$addToSet: {reactions: req.body}},
+        {runValidators: true, new: true}
+    )
+    .then((thought) => 
+    !thought
+    ? res.status(404).json({message: "Thought Id is not found"})
+    : res.json(thought)
+    )
+}
 }
