@@ -12,7 +12,7 @@ getAllUsers(req, res) {
 
 //Get single user
 getUsersById(req, res) {
-    User.findOne({ _id: req.params.userId })
+    User.findOne({ _id: req.params.id })
     .populate("thoughts")
     .populate("friends")
     .select("-__v")
@@ -37,7 +37,7 @@ createUsers(req, res) {
 //update a user
 updateUsers(req, res) {
     User.findOneAndUpdate(
-    { _id: req.params.userId },
+    { _id: req.params.id },
     { $set: req.body },
     { runValidators: true, new: true }
     )
@@ -51,7 +51,7 @@ updateUsers(req, res) {
 
   //delete a user
   deleteUsers(req, res) {
-    User.findOneAndDelete({ _id: req.params.userId })
+    User.findOneAndDelete({ _id: req.params.id })
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No User find with this ID!" })

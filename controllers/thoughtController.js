@@ -11,7 +11,7 @@ getAllThoughts(req, res) {
 
 // get a specified thought
 getThoughtsById(req, res) {
-    Thought.findOne({ _id: req.params.thoughtId })
+    Thought.findOne({ _id: req.params.id })
     .select("-__v")
     .then((thought) =>
         !thought
@@ -25,7 +25,7 @@ createThoughts(req, res) {
     Thought.create(req.body)
     .then(({ _id }) => {
         return User.findOneAndUpdate(
-        { _id: req.body.userId },
+        { _id: req.body.id },
         { $push: { thoughts: _id } },
         { new: true }
         );
