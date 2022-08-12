@@ -16,7 +16,7 @@ social network web application where users can share their thoughts, react to fr
 # Installation:
 npm i
 # Usage: 
-node server.js
+node server.js to start and then proceed to Postman or Insomnia to see the API requests and responses.
 # License:
 ![badge](https://img.shields.io/badge/license-MIT-orange)
 <br />
