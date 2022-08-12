@@ -14,7 +14,6 @@ getAllUsers(req, res) {
 getUsersById(req, res) {
     User.findOne({ _id: req.params.id })
     .populate("thoughts")
-    .populate("friends")
     .select("-__v")
     .then((user) =>
         !user
