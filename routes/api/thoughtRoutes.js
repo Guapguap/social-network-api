@@ -12,22 +12,17 @@ const {
 } = require('../../controllers/thoughtController');
 
 // root route
-// get method
+// get method and post method for thought
 router.route('/')
 .get(getAllThoughts)
 .post(createThoughts);
 
 // route for /api/thoughts/:id 
 // get, put, and delete methods
-router.route('/:id')
+router.route('/:thoughtId')
 .get(getThoughtsById)
 .put(updateThoughts)
 .delete(deleteThoughts); 
-
-// route for /api/thoughts/:userId 
-// post method for thought
-// router.route('/:userId')
-// .post(createThoughts);
 
 // route for /api/thoughts/:thoughtId/reactions 
 // post method for reaction

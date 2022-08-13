@@ -11,7 +11,7 @@ getAllThoughts(req, res) {
 
 // get a specified thought
 getThoughtsById(req, res) {
-    Thought.findOne({ _id: req.params.id })
+    Thought.findOne({ _id: req.params.thoughtId })
     .select("-__v")
     .then((thought) =>
         !thought
@@ -57,7 +57,7 @@ deleteThoughts(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
       .then((thought) =>
         !thought
-          ? res.status(404).json({ message: "No thought find with this ID!" })
+          ? res.status(404).json({ message: "No thought found with this ID!" })
           : User.findOneAndUpdate(
               { thoughts: req.params.thoughtId },
               { $pull: { thoughts: req.params.thoughtId } },
