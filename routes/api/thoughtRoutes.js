@@ -14,7 +14,8 @@ const {
 // root route
 // get method
 router.route('/')
-.get(getAllThoughts);
+.get(getAllThoughts)
+.post(createThoughts);
 
 // route for /api/thoughts/:id 
 // get, put, and delete methods
@@ -25,8 +26,8 @@ router.route('/:id')
 
 // route for /api/thoughts/:userId 
 // post method for thought
-router.route('/:userId')
-.post(createThoughts);
+// router.route('/:userId')
+// .post(createThoughts);
 
 // route for /api/thoughts/:thoughtId/reactions 
 // post method for reaction

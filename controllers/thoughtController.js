@@ -25,7 +25,7 @@ createThoughts(req, res) {
     Thought.create(req.body)
     .then(({ _id }) => {
         return User.findOneAndUpdate(
-        { _id: req.body.id },
+        { _id: req.body.userId },
         { $push: { thoughts: _id } },
         { new: true }
         );
