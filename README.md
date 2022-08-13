@@ -5,6 +5,13 @@
 # Description: 
 social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list.
 
+# Demo
+
+
+
+https://user-images.githubusercontent.com/102185104/184511717-b50e1244-a607-4e49-8b9b-d35ecd60a86a.mp4
+
+
 # Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
